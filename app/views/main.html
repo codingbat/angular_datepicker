@@ -1,0 +1,41 @@
+<div>
+  <h2>Leave Request (individual dates)</h2>
+  <table>
+       <tr>
+         <td>
+
+           <uib-datepicker
+              ng-model='activeDate'
+              multi-select='selectedDates'
+              ng-change="getJson()" >
+          </uib-datepicker>
+
+         </td>
+         <td style='width:50px'>
+         </td>
+         <td>
+           <div>Selected Dates:</div>
+           <div class='well well-sm'>
+             <div ng-repeat='d in selectedDates | orderBy : identity'>
+               {{d | date : 'fullDate'}}
+               <button class='btn btn-xs btn-warning' style='margin:5px' ng-click='removeFromSelected(d)'>Remove</button>
+             </div>
+           </div>
+       </tr>
+  </table>
+</div>
+
+<div>JSON output:</div>
+<div class='well well-sm'>
+  {{json}}
+</div>
+
+<div>GET Leave Request</div>
+<div class='well well-sm'>
+  {{hello.name}}
+
+  <form ng-submit="sendPost()">
+    <input ng-model="newName"/>
+    <button type="submit">POST</button>
+  </form>
+</div>
