@@ -1,5 +1,8 @@
+<div class="jumbotron">
+  <h1>Leave Request</h1>
+</div>
 <div>
-  <h2>Leave Request (individual dates)</h2>
+  <h2>Choose Dates</h2>
   <table>
        <tr>
          <td>
@@ -7,13 +10,13 @@
            <uib-datepicker
               ng-model='activeDate'
               multi-select='selectedDates'
-              ng-change="getJson()" >
+              datepicker-options="inlineOptions" >
           </uib-datepicker>
 
          </td>
          <td style='width:50px'>
          </td>
-         <td>
+         <td style='width:280px'>
            <div>Selected Dates:</div>
            <div class='well well-sm'>
              <div ng-repeat='d in selectedDates | orderBy : identity'>
@@ -21,21 +24,58 @@
                <button class='btn btn-xs btn-warning' style='margin:5px' ng-click='removeFromSelected(d)'>Remove</button>
              </div>
            </div>
+         </td>
        </tr>
   </table>
 </div>
 
-<div>JSON output:</div>
-<div class='well well-sm'>
-  {{json}}
+<h2>Create</h2>
+<div>
+  <table class="table">
+       <tr>
+         <td style="width:200px">
+           <form ng-submit="sendPost()">
+             <button type="submit" class="btn btn-default btn-lg">POST</button>
+           </form>
+         </td>
+         <td style='width:200px'>
+           <div>Status</div>
+           <div class='well well-sm'>
+             {{postStatus}}
+           </div>
+         </td>
+         <td style='width:200px'>
+           <div>Response</div>
+           <div class='well well-sm'>
+             {{postLeave}}
+           </div>
+         </td>
+       </tr>
+  </table>
 </div>
 
-<div>GET Leave Request</div>
-<div class='well well-sm'>
-  {{hello.name}}
 
-  <form ng-submit="sendPost()">
-    <input ng-model="newName"/>
-    <button type="submit">POST</button>
-  </form>
+<h2>Get All</h2>
+<div>
+  <table class="table">
+       <tr>
+         <td style="width:200px">
+           <form ng-submit="getAll()">
+             <button type="submit" class="btn btn-default btn-lg">GET ALL</button>
+           </form>
+         </td>
+         <td style='width:200px'>
+           <div>Status</div>
+           <div class='well well-sm'>
+             {{getStatus}}
+           </div>
+         </td>
+         <td style='width:200px'>
+           <div>Response</div>
+           <div class='well well-sm'>
+             {{getAllLeaves}}
+           </div>
+         </td>
+       </tr>
+  </table>
 </div>
